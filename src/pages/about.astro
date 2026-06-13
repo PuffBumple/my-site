@@ -1,0 +1,13 @@
+---
+import { Image } from 'astro:assets';
+import myPhoto from '../assets/my-photo.jpeg';
+---
+
+<html lang="en">
+  <head><title>About</title></head>
+  <body>
+    <h1>About Me</h1>
+    <Image src={myPhoto} alt="My photo" width={800} />
+    <p>This is a second page. Navigate to <a href="/">Home</a>.</p>
+  </body>
+</html>

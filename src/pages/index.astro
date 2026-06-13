@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import Card from '../components/Card.astro';
+
+const title = "My First Astro Site";
+const features = [
+  "Blazing fast static output",
+  "Component-based architecture",
+  "Markdown support out of the box",
+];
+
+---
+
+<BaseLayout title="Home">
+  <h1>Welcome</h1>
+  <p>Content goes here.</p>
+</BaseLayout>
+
+<Card title="Fast" description="Ships zero JS by default." />
+<Card title="Flexible" description="Bring your own UI framework." />
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      h1 { color: #7c3aed; }
+    </style>
+  </head>
+  <body>
+    <h1>{title}</h1>
+    <p>Welcome to my new site built with Astro.</p>
+    <ul>
+      {features.map(f => <li>{f}</li>)}
+    </ul>
+  </body>
+</html>
