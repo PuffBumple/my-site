@@ -9,6 +9,7 @@ Hiii :3
 <br>
   My name's Willow <br>
   I'm not greate at coding but im learning
+  I will never stop using ":3"
 
 ## <span style="color: #5b21b6;">gimmie your credit card information :3</span>
 
@@ -100,7 +101,7 @@ button[type="submit"] {
       <input type="text" id="card-cvc" inputmode="numeric" placeholder="CVV" required>
     </div>
   </div>
-  <button type="submit">Submit Payment</button>
+  <button type="submit">Give it</button>
 </form>
 </div>
 
