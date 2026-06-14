@@ -10,13 +10,15 @@ const { title } = Astro.props;
     <style>
       body { font-family: system-ui, sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem; }
       nav a { margin-right: 1rem; }
+      h1 { color: #7c3aed; }
+      h2 { color: #5b21b6; }
     </style>
   </head>
   <body>
     <nav>
       <a href="/">Home</a>
       <a href="/about">About</a>
-      <a href="/blog/hello">Blog</a>
+      <a href="/blog">Identity</a>
     </nav>
     <slot />  <!-- Page content is injected here -->
   </body>

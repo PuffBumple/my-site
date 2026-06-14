@@ -3,22 +3,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 import Card from '../components/Card.astro';
 
-const title = "My First Astro Site";
+const title = "What everything means";
 const features = [
-  "Blazing fast static output",
-  "Component-based architecture",
-  "Markdown support out of the box",
+  "Home page = what you see right now :3",
+  "Blog = where I write about my thoughts, crushes, daily arson, and whatever else I want to talk about :3",
+  "Identity= a page where I talk about my identity and how I feel about it. It's a bit of a mess :3",
 ];
-
 ---
 
 <BaseLayout title="Home">
   <h1>Welcome</h1>
-  <p>Content goes here.</p>
+  <h2>Content warnings:</h2>
 </BaseLayout>
 
-<Card title="Fast" description="Ships zero JS by default." />
-<Card title="Flexible" description="Bring your own UI framework." />
+<Card title="GAY" description="I'm very gay and queer :3" />
+<Card title="Depression" description="I'm very depressed and anxious. I might talk about self-harm and shit." />
+
 
 <html lang="en">
   <head>
@@ -33,11 +33,12 @@ const features = [
         padding: 2rem;
       }
       h1 { color: #7c3aed; }
+      h2 { color: #5b21b6; }
     </style>
   </head>
   <body>
     <h1>{title}</h1>
-    <p>Welcome to my new site built with Astro.</p>
+    <p>Home page for all things me.</p>
     <ul>
       {features.map(f => <li>{f}</li>)}
     </ul>
