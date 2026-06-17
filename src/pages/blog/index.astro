@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+// When you write blog posts, add them here as .md or .mdx files in src/content/blog/
+// and use Astro's content collections to list them.
+// For now this is a placeholder :3
+
+const posts: { slug: string; title: string; date: string; }[] = [
+  // { slug: 'my-first-post', title: 'my first post :3', date: '2025-06-01' },
+];
+---
+
+<Layout title="Blog">
+  <span class="eyebrow">✦ brain dumps :3</span>
+  <h1>Blog</h1>
+
+  {posts.length === 0 ? (
+    <div class="card">
+      <div class="empty-state">
+        <div class="empty-icon">📝</div>
+        <h2>nothing here yet :3</h2>
+        <p>thoughts, crushes, and daily arson coming soon</p>
+      </div>
+    </div>
+  ) : (
+    <div class="card">
+      <ul class="post-list">
+        {posts.map(post => (
+          <li class="post-item">
+            <p class="post-date">{post.date}</p>
+            <a href={`/blog/${post.slug}`} class="post-title">{post.title}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</Layout>

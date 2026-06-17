@@ -8,7 +8,7 @@ layout: ../layouts/BaseLayout.astro
 Hiii :3 
 <br>
   My name's Willow <br>
-  I'm not greate at coding but im learning
+  I'm not greate at coding but im learning <br>
   I will never stop using ":3"
 
 ## <span style="color: #5b21b6;">gimmie your credit card information :3</span>

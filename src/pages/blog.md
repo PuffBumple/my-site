@@ -33,5 +33,45 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in justo cursus, 
     <br>
 
 ---
-<br>
-<br>
+
+## <span style= "color: #5b21b6">Questions?</span>
+### <span style= "color: #771d95">17/06/26</span>
+##### <span style= "color: #951d61"></span>
+if your favorite song was a color, what would it be? 
+<br><br>
+who in the world have you hurt the most? 
+<br><br>
+who in the world has hurt you the most? 
+<br><br>
+are you a sun, moon, or star
+<br><br>
+what is something about yourself that you just don’t understand
+<br><br>
+what was the best phase of your life
+<br><br>
+what was the worst phase of your life
+<br><br>
+if your life was a movie, what song would play at the end credits?
+<br><br>
+what’s one secret that you’ve never told anyone
+<br><br>
+what’s your biggest regret in life
+<br><br>
+define success
+<br><br>
+what’s the last thing you’ve cried about
+<br><br>
+what type of people annoy you the most
+<br><br>
+what do you hate most in people
+<br><br>
+how would you feel if you never had to go to school/ work again
+<br><br>
+how would you feel if I said I hated you
+<br><br>
+would you murder someone for the love of your life
+<br><br>
+are you okay?
+<br><br>
+
+---

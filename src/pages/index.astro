@@ -1,47 +1,38 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-
-import Card from '../components/Card.astro';
-
-const title = "What everything means";
-const features = [
-  "Home page = what you see right now :3",
-  "about= stuff about me :3",
-  "Blog = where I write about my thoughts, crushes, daily arson, and whatever else I want to talk about :3",
-];
+import Layout from '../layouts/Layout.astro';
 ---
 
-<BaseLayout title="Home">
+<Layout title="Home">
+  <span class="eyebrow">✦ welcome to my corner :3</span>
   <h1>Welcome</h1>
-  <h2>Content warnings:</h2>
-</BaseLayout>
 
-<Card title="GAY" description="I'm very gay and queer :3" />
-<Card title="Depression" description="I'm very depressed and anxious. I might talk about self-harm and shit." />
+  <div class="card">
+    <h2>Content warnings</h2>
+    <div class="cw-grid">
+      <div class="cw-item">
+        <span class="cw-emoji">🌈</span>
+        <div>
+          <span class="cw-label">GAY</span>
+          <p class="cw-desc">I'm very gay and queer :3</p>
+        </div>
+      </div>
+      <div class="cw-item">
+        <span class="cw-emoji">🌧️</span>
+        <div>
+          <span class="cw-label">Depression</span>
+          <p class="cw-desc">I'm very depressed and anxious. I might talk about self-harm and stuff.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{title}</title>
-    <style>
-      body {
-        font-family: system-ui, sans-serif;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 2rem;
-      }
-      h1 { color: #7c3aed; }
-      h2 { color: #5b21b6; }
-      h3 { color: #4c1d95; }
-    </style>
-  </head>
-  <body>
-    <h1>{title}</h1>
-    <p>Home page for all things me.</p>
-    <ul>
-      {features.map(f => <li>{f}</li>)}
+  <div class="card">
+    <h2>What everything means</h2>
+    <p style="font-size: 0.87rem; color: var(--text-dim); margin-top: 0.2rem;">Home page for all things me.</p>
+    <ul class="site-list">
+      <li><span class="page-name">Home</span> what you see right now :3</li>
+      <li><span class="page-name">About</span> stuff about me :3</li>
+      <li><span class="page-name">Blog</span> where I write about my thoughts, crushes, daily arson, and whatever else I want to talk about :3</li>
     </ul>
-  </body>
-</html>
+  </div>
+</Layout>
