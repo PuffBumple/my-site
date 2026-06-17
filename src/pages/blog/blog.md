@@ -1,6 +1,5 @@
 ---
 title: "Hello from Markdown"
-layout: ../layouts/BaseLayout.astro
 
 ---
 # <span style= "color: #7c3aed">My Blog</span>
