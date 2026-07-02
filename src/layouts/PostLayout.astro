@@ -1,0 +1,60 @@
+---
+import Layout from './Layout.astro';
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+  <span class="eyebrow">✦ blog :3</span>
+  <h1>{frontmatter.title}</h1>
+
+  <div class="card" style="margin-bottom: 1.2rem;">
+    <p style="font-size: 0.85rem; color: var(--text-dim);">{frontmatter.date}</p>
+  </div>
+
+  <div class="card post-body">
+    <slot />
+  </div>
+
+  <a href="/blog" class="back-link">← back to blog</a>
+</Layout>
+
+<style>
+  .post-body :global(p)       { margin-bottom: 1rem; color: var(--text-dim); }
+  .post-body :global(h2)      { margin-top: 1.5rem; margin-bottom: 0.5rem; }
+  .post-body :global(h3)      { margin-top: 1.25rem; margin-bottom: 0.4rem; }
+  .post-body :global(ul),
+  .post-body :global(ol)      { padding-left: 1.5rem; margin-bottom: 1rem; color: var(--text-dim); }
+  .post-body :global(li)      { margin-bottom: 0.3rem; line-height: 1.7; }
+  .post-body :global(a)       { color: var(--lavender-soft); }
+  .post-body :global(a:hover) { color: var(--pink-soft); }
+  .post-body :global(hr)      { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .post-body :global(strong)  { color: var(--text); font-weight: 600; }
+  .post-body :global(em)      { color: var(--pink-soft); font-style: italic; }
+  .post-body :global(blockquote) {
+    border-left: 3px solid var(--lavender);
+    padding-left: 1rem;
+    margin: 1rem 0;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+  .post-body :global(code) {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.88em;
+    color: var(--pink-soft);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    color: var(--lavender-soft);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .back-link:hover { color: var(--pink-soft); }
+</style>

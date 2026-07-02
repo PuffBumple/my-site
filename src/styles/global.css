@@ -445,3 +445,25 @@ p {
   .form-grid { grid-template-columns: 1fr; }
   h1 { font-size: 2.6rem; }
 }
+
+/* ── audio ── */
+audio {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s;
+  height: 50px;
+}
+
+audio::-webkit-media-controls-enclosure {
+    background: transparent !important;
+}
+
+audio::-moz-media-controls-background {
+  background: transparent !important;
+}
