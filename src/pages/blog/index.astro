@@ -6,9 +6,18 @@ const posts = Object.entries(postModules).map(([path, mod]: [string, any]) => ({
   url: '/blog/' + path.replace('./', '').replace('.md', ''),
   frontmatter: mod.frontmatter,
 }));
-posts.sort((a, b) =>
-  new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()
-);
+
+const parseDate = (value: string) => {
+  const match = value.match(/^(\d{1,2})[-/](\d{1,2})[-/](\d{4})$/);
+  if (!match) {
+    return new Date(value).getTime();
+  }
+
+  const [, day, month, year] = match;
+  return Date.UTC(Number(year), Number(month) - 1, Number(day));
+};
+
+posts.sort((a, b) => parseDate(b.frontmatter.date) - parseDate(a.frontmatter.date));
 ---
 
 <Layout title="Blog">
