@@ -193,6 +193,18 @@ p {
   font-size: 1rem;
 }
 
+details {
+  line-height: 1.75;
+  color: var(--text-dim);
+  font-size: 1rem;
+}
+
+summary {
+  line-height: 1.75;
+  color: var(--text-dim);
+  font-size: 1rem;
+
+}
 /* ── cards ── */
 .card {
   background: var(--surface);
