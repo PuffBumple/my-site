@@ -4,15 +4,15 @@ import { defineMiddleware } from "astro:middleware";
 export const onRequest = defineMiddleware(async (context, next) => {
   const url = new URL(context.request.url);
 
-  // 1. Astro v6 Environment Variables retrieval method
+  // 1. Comprehensive environment variable matching
   let BLOG_PASSWORD;
   try {
-    // Dynamically look up from Cloudflare's runtime workers module
+    // Check Cloudflare Workers production runtime context
     const { env } = await import("cloudflare:workers");
     BLOG_PASSWORD = env.BLOG_PASSWORD;
   } catch (e) {
-    // Fallback to local Node.js environment variables during development
-    BLOG_PASSWORD = process.env.BLOG_PASSWORD;
+    // Failover: Read from Vite / local .dev.vars / system environment bindings
+    BLOG_PASSWORD = import.meta.env.BLOG_PASSWORD || process.env.BLOG_PASSWORD;
   }
 
   // Ensure security logic only triggers on /blog or child paths
@@ -24,7 +24,8 @@ export const onRequest = defineMiddleware(async (context, next) => {
         const formData = await context.request.formData();
         const passwordInput = formData.get("password");
 
-        if (passwordInput === BLOG_PASSWORD) {
+        // Convert password input to string to guarantee valid matches on numerical keys
+        if (String(passwordInput) === String(BLOG_PASSWORD)) {
           // Success! Drop a secure HttpOnly cookie valid for 7 days
           const response = new Response(null, { status: 302, headers: { "Location": url.pathname } });
           response.headers.append("Set-Cookie", "blog_auth=authenticated; Path=/blog; HttpOnly; Max-Age=604800; SameSite=Strict; Secure");
