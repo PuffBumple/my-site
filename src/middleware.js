@@ -4,13 +4,21 @@ import { defineMiddleware } from "astro:middleware";
 export const onRequest = defineMiddleware(async (context, next) => {
   const url = new URL(context.request.url);
 
-  // Read environment variables directly from Cloudflare's runtime context
-  const BLOG_PASSWORD = context.locals.runtime?.env?.BLOG_PASSWORD || process.env.BLOG_PASSWORD;
+  // 1. Astro v6 Environment Variables retrieval method
+  let BLOG_PASSWORD;
+  try {
+    // Dynamically look up from Cloudflare's runtime workers module
+    const { env } = await import("cloudflare:workers");
+    BLOG_PASSWORD = env.BLOG_PASSWORD;
+  } catch (e) {
+    // Fallback to local Node.js environment variables during development
+    BLOG_PASSWORD = process.env.BLOG_PASSWORD;
+  }
 
-  // Ensure security logic only triggers on /blog or child paths (e.g., /blog/my-post)
+  // Ensure security logic only triggers on /blog or child paths
   if (url.pathname.startsWith('/blog')) {
     
-    // 1. Handle incoming password form submissions (POST)
+    // Handle incoming password form submissions (POST)
     if (context.request.method === "POST") {
       try {
         const formData = await context.request.formData();
@@ -28,11 +36,11 @@ export const onRequest = defineMiddleware(async (context, next) => {
           });
         }
       } catch (e) {
-        // Handle malformed form body parsing errors safely
+        // Safe fall-through
       }
     }
 
-    // 2. Validate current session against existing cookies
+    // Validate current session against existing cookies
     const cookies = context.request.headers.get("cookie") || "";
     const isAuthenticated = cookies.includes("blog_auth=authenticated");
 
@@ -48,7 +56,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   return next();
 });
 
-// Standalone lock UI rendered directly on Cloudflare Edge Worker
+// Lock UI template
 function renderLockPage(error = "") {
   return `
     <!DOCTYPE html>
