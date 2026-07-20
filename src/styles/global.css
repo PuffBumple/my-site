@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Nunito:ital,wght@0,300;0,400;0,600;1,400&display=swap');
 
-/* ── tokens ── */
+/*tokens*/
 :root {
   --bg: #0d0818;
   --surface: #1a1033;
@@ -14,7 +14,7 @@
   --border: rgba(167, 139, 250, 0.18);
 }
 
-/* ── reset ── */
+/*reset*/
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
@@ -26,45 +26,8 @@ body {
   overflow-x: hidden;
 }
 
-/* ── stars background ── */
-#stars {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
 
-.star {
-  position: absolute;
-  background: white;
-  border-radius: 50%;
-  opacity: 0;
-  animation: twinkle var(--d, 3s) ease-in-out infinite;
-  animation-delay: var(--delay, 0s);
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0; transform: scale(1); }
-  50% { opacity: var(--max-op, 0.6); transform: scale(1.6); }
-}
-
-/* ── rainbow stripe ── */
-.nav-rainbow {
-  position: relative;
-  z-index: 101;
-  height: 3px;
-  background: linear-gradient(90deg, #f472b6, #a78bfa, #60a5fa, #4ade80, #fbbf24, #f472b6);
-  background-size: 200% 100%;
-  animation: rainbow 5s linear infinite;
-}
-
-@keyframes rainbow {
-  0%   { background-position: 0% 0%; }
-  100% { background-position: 200% 0%; }
-}
-
-/* ── nav ── */
+/*nav*/
 nav {
   position: sticky;
   top: 0;
@@ -132,7 +95,7 @@ nav {
   width: 60%;
 }
 
-/* ── layout ── */
+/*layout*/
 main {
   position: relative;
   z-index: 1;
@@ -141,7 +104,7 @@ main {
   padding: 2.5rem 1.5rem 5rem;
 }
 
-/* ── typography ── */
+/*typography*/
 .eyebrow {
   display: block;
   font-family: 'Caveat', cursive;
@@ -205,7 +168,7 @@ summary {
   font-size: 1rem;
 
 }
-/* ── cards ── */
+/*cards*/
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -221,7 +184,7 @@ summary {
   border-color: rgba(167, 139, 250, 0.38);
 }
 
-/* ── content warnings ── */
+/*content warning*/
 .cw-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -261,7 +224,7 @@ summary {
   line-height: 1.5;
 }
 
-/* ── site map list ── */
+/*site map list*/
 .site-list {
   list-style: none;
   margin-top: 0.85rem;
@@ -289,7 +252,7 @@ summary {
   min-width: 56px;
 }
 
-/* ── about: basic info ── */
+/*about: basic info*/
 .info-list { margin-top: 0.85rem; }
 
 .info-row {
@@ -302,7 +265,7 @@ summary {
 .info-row:last-child { border-bottom: none; }
 .info-row .hi { color: var(--pink-soft); font-weight: 600; }
 
-/* ── identity grid ── */
+/*identity grid*/
 .identity-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -349,7 +312,7 @@ summary {
   flex-shrink: 0;
 }
 
-/* ── evil credit card form ── */
+/*evil credit card form*/
 .evil-card { border-color: rgba(232, 121, 249, 0.28); }
 
 .evil-header {
@@ -412,17 +375,11 @@ summary {
 .evil-btn:hover { opacity: 0.88; transform: translateY(-1px); }
 .evil-btn:active { transform: translateY(0); }
 
-/* ── blog empty state ── */
-.empty-state {
-  text-align: center;
-  padding: 3.5rem 1rem;
-}
-
 .empty-icon { font-size: 3rem; margin-bottom: 1rem; }
 .empty-state h2 { margin-bottom: 0.5rem; }
 .empty-state p { color: var(--text-dim); font-size: 0.95rem; }
 
-/* ── blog post list ── */
+/*blog post list*/
 .post-list { list-style: none; margin-top: 0.5rem; }
 
 .post-item {
@@ -450,7 +407,7 @@ summary {
 
 .post-title:hover { color: var(--lavender-soft); }
 
-/* ── responsive ── */
+/*responsive*/
 @media (max-width: 520px) {
   .cw-grid { grid-template-columns: 1fr; }
   .identity-grid { grid-template-columns: 1fr; }
@@ -458,7 +415,7 @@ summary {
   h1 { font-size: 2.6rem; }
 }
 
-/* ── audio ── */
+/*audio*/
 audio {
   width: 100%;
   background: var(--surface);
@@ -478,4 +435,42 @@ audio::-webkit-media-controls-enclosure {
 
 audio::-moz-media-controls-background {
   background: transparent !important;
+}
+
+/*stars background*/
+#stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle var(--d, 3s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50% { opacity: var(--max-op, 0.6); transform: scale(1.6); }
+}
+
+/*rainbow stripe*/
+.nav-rainbow {
+  position: relative;
+  z-index: 101;
+  height: 3px;
+  background: linear-gradient(90deg, #f472b6, #a78bfa, #60a5fa, #4ade80, #fbbf24, #f472b6);
+  background-size: 200% 100%;
+  animation: rainbow 5s linear infinite;
+}
+
+@keyframes rainbow {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
 }
