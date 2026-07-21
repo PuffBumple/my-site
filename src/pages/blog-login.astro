@@ -1,0 +1,55 @@
+---
+let errorMessage = "";
+
+// Handle form validation if the user submits the password form
+if (Astro.request.method === "POST") {
+  try {
+    const formData = await Astro.request.formData();
+    const passwordInput = formData.get("password");
+
+    // Fetch password secret across runtime environments safely
+    let BLOG_PASSWORD;
+    try {
+      const { env } = await import("cloudflare:workers");
+      BLOG_PASSWORD = env.BLOG_PASSWORD;
+    } catch (e) {
+      BLOG_PASSWORD =
+        import.meta.env.BLOG_PASSWORD || (globalThis as any).process?.env?.BLOG_PASSWORD;
+    }
+
+    if (String(passwordInput) === String(BLOG_PASSWORD)) {
+      // Success: Drop a secure cookie and redirect to the blog index page
+      Astro.response.headers.append(
+        "Set-Cookie",
+        "blog_auth=authenticated; Path=/blog; HttpOnly; Max-Age=604800; SameSite=Strict; Secure"
+      );
+      return Astro.redirect("/blog");
+    } else {
+      errorMessage = "Incorrect password. Please try again!";
+    }
+  } catch (e) {
+    errorMessage = "An error occurred. Please try again.";
+  }
+}
+
+import Layout from "../layouts/Layout.astro";
+---
+<Layout title="Blog Login">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locked Content</title>
+  </head>
+  <body>
+    <h1>you need a fucking password</h1>
+    <div class="card">
+      <p>I am allowed basic privacy. This took too long to code.</p>
+      {errorMessage && <p class="error">{errorMessage}</p>}
+      <form method="POST">
+        <input type="password" name="password" placeholder="Enter password" autofocus required />
+        <button type="submit">Unlock Blog</button>
+      </form>
+    </div>
+  </body>
+</Layout>
