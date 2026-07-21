@@ -1,7 +1,6 @@
 ---
 let errorMessage = "";
 
-// Handle form validation if the user submits the password form
 if (Astro.request.method === "POST") {
   try {
     const formData = await Astro.request.formData();
@@ -13,16 +12,20 @@ if (Astro.request.method === "POST") {
       const { env } = await import("cloudflare:workers");
       BLOG_PASSWORD = env.BLOG_PASSWORD;
     } catch (e) {
-      BLOG_PASSWORD =
-        import.meta.env.BLOG_PASSWORD || (globalThis as any).process?.env?.BLOG_PASSWORD;
+      BLOG_PASSWORD = import.meta.env.BLOG_PASSWORD || process.env.BLOG_PASSWORD;
     }
 
     if (String(passwordInput) === String(BLOG_PASSWORD)) {
-      // Success: Drop a secure cookie and redirect to the blog index page
-      Astro.response.headers.append(
-        "Set-Cookie",
-        "blog_auth=authenticated; Path=/blog; HttpOnly; Max-Age=604800; SameSite=Strict; Secure"
-      );
+      // ✅ FIX: Use Astro's native cookies set API instead of response headers
+      Astro.cookies.set("blog_auth", "authenticated", {
+        path: "/blog",
+        httpOnly: true,
+        maxAge: 604800, // 7 Days
+        sameSite: "strict",
+        secure: true
+      });
+
+      // Safely direct them directly back to the index
       return Astro.redirect("/blog");
     } else {
       errorMessage = "Incorrect password. Please try again!";
