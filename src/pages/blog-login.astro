@@ -16,7 +16,7 @@ if (Astro.request.method === "POST") {
     }
 
     if (String(passwordInput) === String(BLOG_PASSWORD)) {
-      // ✅ FIX: Use Astro's native cookies set API instead of response headers
+      // FIX: Use Astro's native cookies set API instead of response headers
       Astro.cookies.set("blog_auth", "authenticated", {
         path: "/blog",
         httpOnly: true,
