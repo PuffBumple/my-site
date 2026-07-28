@@ -1,4 +1,6 @@
 ---
+import { BLOG_PASSWORD } from 'astro:env/server'; // Natively fetches your key anywhere
+
 let errorMessage = "";
 
 if (Astro.request.method === "POST") {
@@ -6,27 +8,18 @@ if (Astro.request.method === "POST") {
     const formData = await Astro.request.formData();
     const passwordInput = formData.get("password");
 
-    // Fetch password secret across runtime environments safely
-    let BLOG_PASSWORD;
-    try {
-      const { env } = await import("cloudflare:workers");
-      BLOG_PASSWORD = env.BLOG_PASSWORD;
-    } catch (e) {
-      BLOG_PASSWORD = import.meta.env.BLOG_PASSWORD || process.env.BLOG_PASSWORD;
-    }
-
     if (String(passwordInput) === String(BLOG_PASSWORD)) {
-      // FIX: Use Astro's native cookies set API instead of response headers
-      Astro.cookies.set("blog_auth", "authenticated", {
-        path: "/blog",
-        httpOnly: true,
-        maxAge: 604800, // 7 Days
-        sameSite: "strict",
-        secure: true
+      const response = new Response(null, {
+        status: 302,
+        headers: { "Location": "/blog" }
       });
 
-      // Safely direct them directly back to the index
-      return Astro.redirect("/blog");
+      response.headers.append(
+        "Set-Cookie",
+        "blog_auth=authenticated; Path=/blog; HttpOnly; Max-Age=604800; SameSite=Strict; Secure"
+      );
+
+      return response;
     } else {
       errorMessage = "Incorrect password. Please try again!";
     }
@@ -34,6 +27,7 @@ if (Astro.request.method === "POST") {
     errorMessage = "An error occurred. Please try again.";
   }
 }
+---
 
 import Layout from "../layouts/Layout.astro";
 ---
