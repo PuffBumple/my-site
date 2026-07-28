@@ -11,17 +11,20 @@ import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
   output: 'server',
   integrations: [mdx()],
-  adapter: cloudflare({
-        platformProxy: {
-      enabled: true,
-      // Forces Astro to use the Node-compatible runtime configuration locally
-      experimentalJsonConfig: true, 
-    },
-  }),
+  adapter: cloudflare({}),
   vite: {
     ssr: {
       // Prevents Vite from externalizing built-in Node modules during dev execution
       noExternal: ['shiki'],
     },
   },
+    env: {
+    schema: {
+      BLOG_PASSWORD: {
+        type: 'string',
+        context: 'server', // Ensures it stays hidden on the backend
+        access: 'secret',
+      }
+    }
+    }
 });
