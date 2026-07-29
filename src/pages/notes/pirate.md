@@ -2,32 +2,19 @@
 layout: ../../layouts/PostLayout.astro
 title: totally legal websites
 ---
-<Layout>
-totally legal
+## Random websites i found
+<br>
 
-europixhd.io
+[Windows 93](https://windows93.net)
 
-zoogle.com
+[Map generator](https://www.redblobgames.com/maps/mapgen4/)
 
-gowatchseries.com
+[Create text in Brat style](https://www.bratgenerator.com/)
 
-123movies
+[Adobe alternatives](https://github.com/KenneyNL/Adobe-Alternatives)
 
-fmovies
+[pronoun tester](https://chocolate-pancake.github.io/pronounsandnamestester/)
 
-bmovies
+[cool persons blog i found](https://wordpress96421.wordpress.com/)
 
-levidia.ch
-
-watchseries.movie
-
-couchtuner
-
-flixtor.to
-
-putlocker
-
-myflixer.com
-
-stremio
-<Layout>
+[slightly deep uquiz](https://uquiz.com/quiz/w6OPts/what-color-are-you)
