@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/PostLayout.astro
-title: totally legal websites
+title: cool websites
 ---
 ## Random websites i found
 <br>
