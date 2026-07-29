@@ -1,9 +1,8 @@
 ---
 layout: ../../layouts/PostLayout.astro
 title: List of quotes
-date: 69/69/6969
 ---
-
+<Layout>
 <details>
   <summary>Spoiler warning</summary>
   
@@ -12,5 +11,5 @@ date: 69/69/6969
   ```javascript
   console.log("I'm a code block!");
   ```
-  
 </details>
+</Layout>

@@ -5,18 +5,17 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout title={frontmatter.title}>
-  <span class="eyebrow">✦ blog :3</span>
+  <span class="eyebrow">✦ Notes :3</span>
   <h1>{frontmatter.title}</h1>
 
   <div class="card" style="margin-bottom: 1.2rem;">
-    <p style="font-size: 0.85rem; color: var(--text-dim);">{frontmatter.date}</p>
   </div>
 
   <div class="card post-body">
     <slot />
   </div>
 
-  <a href="/blog" class="back-link">← back to blog</a>
+  <a href="/notes" class="back-link">← back to notes</a>
 </Layout>
 
 <style>

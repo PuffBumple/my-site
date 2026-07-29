@@ -16,12 +16,10 @@ const parseDate = (value: string) => {
   const [, day, month, year] = match;
   return Date.UTC(Number(year), Number(month) - 1, Number(day));
 };
-
-posts.sort((a, b) => parseDate(b.frontmatter.date) - parseDate(a.frontmatter.date));
 ---
 
-<Layout title="Blog">
-  <h1>Blog</h1>
+<Layout title="Notes">
+  <h1>Notes</h1>
 
   {posts.length === 0 ? (
     <div class="card">
@@ -36,7 +34,6 @@ posts.sort((a, b) => parseDate(b.frontmatter.date) - parseDate(a.frontmatter.dat
       <ul class="post-list">
         {posts.map(post => (
           <li class="post-item">
-            <p class="post-date">{post.frontmatter.date}</p>
             <a href={post.url} class="post-title">{post.frontmatter.title}</a>
           </li>
         ))}

@@ -12,19 +12,4 @@ export default defineConfig({
   output: 'server',
   integrations: [mdx()],
   adapter: cloudflare({}),
-  vite: {
-    ssr: {
-      // Prevents Vite from externalizing built-in Node modules during dev execution
-      noExternal: ['shiki'],
-    },
-  },
-    env: {
-    schema: {
-      BLOG_PASSWORD: {
-        type: 'string',
-        context: 'server', // Ensures it stays hidden on the backend
-        access: 'secret',
-      }
-    }
-    }
 });
